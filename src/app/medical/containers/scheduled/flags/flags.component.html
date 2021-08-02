@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col-sm-12">
+    <panel variants="default" noButton="true" bodyClass="bg-dark text-white">
+      <ng-container header>
+        <h4 class="panel-title">INDICADORES DIARIOS</h4>
+      </ng-container>
+      <div class="widget-list widget-list-rounded inverse-mode">
+        <div class="row">
+          <div class="col-xs-6 col-md-4 col-lg-2">
+            <a href="#" class="widget-list-item rounded-0 p-t-3">
+              <div class="widget-list-content">
+                <div class="widget-list-title">No Válido</div>
+              </div>
+              <div class="widget-list-action text-nowrap text-grey">
+                <i *ngIf="loading" class="fas fa-spinner fa-spin"></i>
+                <span *ngIf="!loading">{{ novalidos }}</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-xs-6 col-md-4 col-lg-2">
+            <a href="#" class="widget-list-item rounded-0 p-t-3">
+              <div class="widget-list-content">
+                <div class="widget-list-title">Negativo</div>
+              </div>
+              <div class="widget-list-action text-nowrap text-grey">
+                <i *ngIf="loading" class="fas fa-spinner fa-spin"></i>
+                <span *ngIf="!loading">{{ negativos }}</span>
+              </div>
+            </a>
+          </div>
+          <div class="col-xs-6 col-md-4 col-lg-2">
+            <a href="#" class="widget-list-item rounded-0 p-t-3">
+              <div class="widget-list-content">
+                <div class="widget-list-title">IgM Positivo</div>
+              </div>
+              <div class="widget-list-action text-nowrap text-grey">
+                <i *ngIf="loading" class="fas fa-spinner fa-spin"></i>
+                <span *ngIf="!loading">{{ igmPositivo }}</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-xs-6 col-md-4 col-lg-2">
+            <a href="#" class="widget-list-item rounded-0 p-t-3">
+              <div class="widget-list-content">
+                <div class="widget-list-title">IgG Positivo</div>
+              </div>
+              <div class="widget-list-action text-nowrap text-grey">
+                <i *ngIf="loading" class="fas fa-spinner fa-spin"></i>
+                <span *ngIf="!loading">{{ iggPositivo }}</span>
+              </div>
+            </a>
+          </div>
+          <div class="col-xs-6 col-md-4 col-lg-2">
+            <a href="#" class="widget-list-item rounded-0 p-t-3">
+              <div class="widget-list-content">
+                <div class="widget-list-title">IgM e IgG</div>
+              </div>
+              <div class="widget-list-action text-nowrap text-grey">
+                <i *ngIf="loading" class="fas fa-spinner fa-spin"></i>
+                <span *ngIf="!loading">{{ igmiggPositivo }}</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-xs-6 col-md-4 col-lg-2">
+            <a href="#" class="widget-list-item rounded-0 p-t-3">
+              <div class="widget-list-content">
+                <div class="widget-list-title">Total</div>
+              </div>
+              <div class="widget-list-action text-nowrap text-grey">
+                <i *ngIf="loading" class="fas fa-spinner fa-spin"></i>
+                <span *ngIf="!loading">{{ total }}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </panel>
+  </div>
+</div>

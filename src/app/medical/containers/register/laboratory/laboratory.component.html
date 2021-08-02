@@ -1,0 +1,98 @@
+<form [formGroup]="laboratoryForm">
+  <fieldset>
+    <div class="bloque">
+      <div class="row">
+        <div class="col-md-4">
+          <label class="col-form-label">FECHA EJECUCIÓN</label>
+          <input
+            type="date"
+            class="form-control m-b-5"
+            name="fechaEjecucion"
+            formControlName="fechaEjecucion"
+          />
+        </div>
+        <div class="col-md-4">
+          <label class="col-form-label">PROCEDENCIA DE SOLICITUD</label>
+          <div>
+            <select
+              class="form-control"
+              name="procedenciaSolicitud"
+              formControlName="procedenciaSolicitud"
+            >
+              <option *ngFor="let type of listaProcedenciaSolicitud" [value]="type.value">
+                {{ type.viewValue }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="col-form-label">RESULTADO PRIMERA PRUEBA</label>
+          <div>
+            <select
+              class="form-control"
+              name="resultadoPrimeraPrueba"
+              formControlName="resultadoPrimeraPrueba"
+            >
+              <option *ngFor="let type of listaResultados" [value]="type.value">
+                {{ type.viewValue }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label class="col-form-label">RESULTADO SEGUNDA PRUEBA</label>
+          <div>
+            <select
+              class="form-control"
+              name="resultadoSegundaPrueba"
+              formControlName="resultadoSegundaPrueba"
+              [attr.disabled]="disabledSegundaPrueba"
+            >
+              <option *ngFor="let type of listaResultados" [value]="type.value">
+                {{ type.viewValue }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label class="col-form-label">CLASIFICACIÓN CLÍNICA</label>
+          <div>
+            <select
+              class="form-control"
+              name="clasificacionClinica"
+              formControlName="clasificacionClinica"
+            >
+              <option *ngFor="let type of listaCalificacionClinica" [value]="type.value">
+                {{ type.viewValue }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <!-- <fieldset>
+        <div class="bloque">
+            <div class="row">
+                <div class="col-12">
+                    <div class="note note-warning note-with-right-icon">
+                        <div class="note-icon"><i class="fa fa-info-circle"></i></div>
+                        <div class="note-content text-left">
+                            <h6><b>CONFIRME RESULTADO </b></h6>
+                            <div class="col-md-4 text-right">
+                                <select class="form-control" name="confirmeResultado" formControlName="confirmeResultado" (change)="confirmarResultado($event.target.value)">
+                  <option *ngFor="let type of listaResultados" [value]="type.value">
+                    {{ type.viewValue }}
+                  </option>
+                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset> -->
+</form>

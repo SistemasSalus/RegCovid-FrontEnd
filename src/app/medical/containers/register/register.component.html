@@ -1,0 +1,46 @@
+<ngb-tabset>
+    <ngb-tab>
+        <ng-template ngbTabTitle>
+            <span class="d-sm-none">ENCUESTA</span>
+            <span class="d-sm-block d-none">ENCUESTA</span>
+        </ng-template>
+        <ng-template ngbTabContent>
+            <app-survey [serviceId]="serviceId" [componentId]="componentId"></app-survey>
+            <p class="text-right m-b-0">
+                <a href="javascript:;" class="btn btn-white m-r-5" [routerLink]="urlBack">IR A BANDEJA</a>
+                <button type="button" class="btn btn-primary" (click)="saveEncuesta()" [disabled]="!surveyFormValid">
+          GRABAR ENCUESTA
+        </button>
+            </p>
+        </ng-template>
+    </ngb-tab>
+    <ngb-tab>
+        <ng-template ngbTabTitle>
+            <span class="d-sm-none">LABORATORIO</span>
+            <span class="d-sm-block d-none">LABORATORIO</span>
+        </ng-template>
+        <ng-template ngbTabContent>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Resultado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let result of previousResults">
+                        <td>{{ result.fechaServicio | date }}</td>
+                        <td>{{ result.resultado }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <app-laboratory [serviceId]="serviceId" [componentId]="componentId"></app-laboratory>
+            <p class="text-right m-b-0">
+                <a href="javascript:;" class="btn btn-white m-r-5" [routerLink]="urlBack">IR A BANDEJA</a>
+                <button type="button" class="btn btn-primary" (click)="saveLaboratorio()" [disabled]="!laboratoryFormValid">
+          GRABAR LABORATORIO
+        </button>
+            </p>
+        </ng-template>
+    </ngb-tab>
+</ngb-tabset>

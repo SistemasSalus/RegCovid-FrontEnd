@@ -1,0 +1,22 @@
+<app-filter
+  *ngIf="access"
+  (optionValue)="changeOption($event)"
+  (fechaValue)="changeFecha($event)"
+  (clinicValue)="changeClinic($event)"
+></app-filter>
+<app-scheduled-list
+  *ngIf="access"
+  [fecha]="fechaValue"
+  [option]="optionValue"
+  [clinic]="clinicValue"
+></app-scheduled-list>
+<button
+  *ngIf="access"
+  mat-button
+  class="btn btn-primary btn-icon btn-circle btn-xl"
+  id="add-register-button"
+  (click)="newRegister()"
+  aria-label="add register"
+>
+  <i class="fa fa-user-plus"></i>
+</button>

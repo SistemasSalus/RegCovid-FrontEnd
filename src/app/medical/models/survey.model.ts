@@ -1,0 +1,90 @@
+export class Survey {
+  serviceComponentId: string;
+  personId: string;
+  componentId: string;
+
+  tipoDomicilio: string;
+  geolocalizacion: string;
+  esPersonalSaludCbo: string;
+  profesion: string;
+  tieneSintomas: string;
+  inicioSintomas: string;
+  day: number;
+  month: number;
+  year: number;
+  tos: string;
+  dolorGarganta: string;
+  congestionNasal: string;
+  dificultadRespiratoria: string;
+  fiebreEscalofrio: string;
+  malestarGeneral: string;
+  diarrea: string;
+  nauseasVomitos: string;
+  cefalea: string;
+  irritabilidadConfusion: string;
+  dolor: string;
+  expectoracion: string;
+  dolorMuscular: string;
+  dolorAbdominal: string;
+  dolorPecho: string;
+  dolorArticulaciones: string;
+  otrosSintomas: string;
+  diabetes: string;
+  enfPulmonarCronica: string;
+  cancer: string;
+  hipertensionArterial: string;
+  obesidad: string;
+  mayor65: string;
+  insuficienciaCronica: string;
+  embarazo: string;
+  enfCardiovascular: string;
+  asma: string;
+  enfInmunosupresor: string;
+  personalSalud: string;
+  constructor(survey) {
+    {
+      this.serviceComponentId = survey.serviceComponentId;
+      this.personId = survey.personId;
+      this.componentId = survey.componentId;
+
+      this.tipoDomicilio = survey.tipoDomicilio;
+      this.geolocalizacion = survey.geolocalizacion;
+      this.esPersonalSaludCbo = survey.esPersonalSaludCbo;
+      this.profesion = survey.profesion;
+      this.tieneSintomas = survey.tieneSintomas;
+      this.inicioSintomas = survey.inicioSintomas;
+      this.day = survey.day;
+      this.month = survey.month;
+      this.year = survey.year;
+      this.tos = survey.tos;
+      this.dolorGarganta = survey.dolorGarganta;
+      this.congestionNasal = survey.congestionNasal;
+      this.dificultadRespiratoria = survey.dificultadRespiratoria;
+      this.fiebreEscalofrio = survey.fiebreEscalofrio;
+      this.malestarGeneral = survey.malestarGeneral;
+      this.diarrea = survey.diarrea;
+      this.nauseasVomitos = survey.nauseasVomitos;
+      this.cefalea = survey.cefalea;
+      this.irritabilidadConfusion = survey.irritabilidadConfusion;
+      this.dolor = survey.dolor;
+      this.expectoracion = survey.expectoracion;
+      this.dolorMuscular = survey.dolorMuscular;
+      this.dolorAbdominal = survey.dolorAbdominal;
+      this.dolorPecho = survey.dolorPecho;
+      this.dolorArticulaciones = survey.dolorArticulaciones;
+      this.otrosSintomas = survey.otrosSintomas;
+      this.diabetes = survey.diabetes;
+      this.enfPulmonarCronica = survey.enfPulmonarCronica;
+      this.cancer = survey.cancer;
+      this.hipertensionArterial = survey.hipertensionArterial;
+      this.obesidad = survey.obesidad;
+      this.mayor65 = survey.mayor65;
+      this.insuficienciaCronica = survey.insuficienciaCronica;
+      this.embarazo = survey.embarazo;
+      this.enfCardiovascular = survey.enfCardiovascular;
+      this.asma = survey.asma;
+      this.enfInmunosupresor = survey.enfInmunosupresor;
+      this.personalSalud = survey.personalSalud;
+    }
+  }
+}

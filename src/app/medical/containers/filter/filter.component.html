@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-sm-12">
+        <panel variants="default">
+            <ng-container header>
+                <h4 class="panel-title">FILTROS AVANZADOS</h4>
+            </ng-container>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="col-form-label">OPCIONES</label>
+                    <div>
+                        <select class="form-control">
+              <option *ngFor="let type of options" [value]="type.value">
+                {{ type.viewValue }}
+              </option>
+            </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="col-form-label">FECHA</label>
+                    <input type="date" class="form-control m-b-5" />
+                </div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col">
+                            <label class="col-form-label">{{ empresa }}</label>
+                            <select *ngIf="empresa === 'CONTRATA'" class="form-control">
+                <option *ngFor="let employe of employeTypes" [value]="employe.value">
+                  {{ employe.viewValue }}
+                </option>
+              </select>
+                            <select *ngIf="empresa === 'CENTRO MÉDICO'" class="form-control">
+                <option value="-1">Todos</option>
+                <option *ngFor="let clinic of externalsClinics" [value]="clinic.ParameterId">
+                  {{ clinic.Value1 }}
+                </option>
+              </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-t-10">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn btn-primary width-100">BUSCAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </panel>
+    </div>
+</div>

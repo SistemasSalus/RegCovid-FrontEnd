@@ -1,0 +1,233 @@
+<panel variants="default" noButton="true" title="REGISTRO TRABAJADOR">
+    <form [formGroup]="scheduleWorkerForm">
+        <fieldset>
+            <legend>Búsqueda por DNI</legend>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Ingresar DNI completo" #buscador />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-yellow dropdown-toggle no-caret"
+                                (click)="buscarTrabajador(buscador.value)">
+                                Buscar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Datos de Examen</legend>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="col-form-label">TIPO PRUEBA</label>
+                    <div>
+                        <select class="form-control" name="componentId" formControlName="componentId" required>
+                            <option *ngFor="let component of components" [value]="component.value">
+                                {{ component.viewValue }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="col-form-label">MOTIVO DE PRUEBA</label>
+                    <div>
+                        <select class="form-control" name="reasonExamId" formControlName="reasonExamId" required>
+                            <option *ngFor="let reason of reasonExam" [value]="reason.value">
+                                {{ reason.viewValue }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="col-form-label">LUGAR DE TOMA</label>
+                    <div>
+                        <select class="form-control" name="placeExamId" formControlName="placeExamId" required>
+                            <option *ngFor="let place of placeExam" [value]="place.value">
+                                {{ place.viewValue }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="col-form-label">FECHA DE REGISTRO</label>
+                    <input type="date" class="form-control m-b-5" name="fechaExamen" formControlName="fechaExamen"
+                        required />
+                </div>
+                <div class="col-md-4">
+                    <label class="col-form-label">CENTRO MÉDICO</label>
+                    <select class="form-control" name="clinicaExternad" formControlName="clinicaExternad" required>
+                        <option *ngFor="let clinic of externalsClinics" [value]="clinic.ParameterId">
+                            {{ clinic.Value1 }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Datos del trabajador</legend>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="col-form-label">TIPO DOCUMENTO</label>
+                    <div>
+                        <select class="form-control" name="docTypeId" formControlName="docTypeId" required>
+                            <option *ngFor="let document of documentTypes" [value]="document.value">
+                                {{ document.viewValue }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label class="col-form-label">NRO. DOCUMENTO</label>
+                    <input type="text" class="form-control m-b-5" name="docNumber" formControlName="docNumber"
+                        required />
+                    <div class="invalid-feedback">Please choose a unique and valid username.</div>
+                </div>
+                <div class="col-md-4">
+                    <label class="col-form-label">GÉNERO</label>
+                    <div>
+                        <select class="form-control" name="sexTypeId" formControlName="sexTypeId" required>
+                            <option *ngFor="let gender of genereTypes" [value]="gender.value">
+                                {{ gender.viewValue }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="col-form-label">NOMBRES</label>
+                    <input type="text" class="form-control m-b-5" name="firstName" formControlName="firstName"
+                        required />
+                </div>
+                <div class="col-md-4">
+                    <label class="col-form-label">APELLIDO PATERNO</label>
+                    <input type="text" class="form-control m-b-5" name="firstLastName" formControlName="firstLastName"
+                        required />
+                </div>
+                <div class="col-md-4">
+                    <label class="col-form-label">APELLIDO MATERNO</label>
+                    <input type="text" class="form-control m-b-5" name="secondLastName" formControlName="secondLastName"
+                        required />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <fieldset>
+                        <legend class="fechanacimiento">FECHA DE NACIMIENTO</legend>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <input type="number" class="form-control m-b-5" placeholder="día" name="day"
+                                        formControlName="day" required />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <input type="number" class="form-control m-b-5" placeholder="mes" name="month"
+                                        formControlName="month" required />
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-group">
+                                    <input type="number" class="form-control m-b-5" placeholder="año" name="year"
+                                        formControlName="year" required />
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-md-4">
+                    <label class="col-form-label">EMAIL</label>
+                    <input type="mail" class="form-control m-b-5" name="mail" formControlName="mail" required />
+                </div>
+                <div class="col-md-4">
+                    <label class="col-form-label">TELÉFONOS</label>
+                    <input type="text" class="form-control m-b-5" name="telephoneNumber"
+                        formControlName="telephoneNumber" required />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label class="col-form-label">PUESTO DE TRABAJO</label>
+                    <input type="text" class="form-control m-b-5" name="currentOccupation"
+                        formControlName="currentOccupation" required [readonly]="controlCurrentOcupDisabled" />
+                </div>
+                <div class="col-md-8">
+                    <label class="col-form-label">DIRECCIÓN</label>
+                    <input type="text" class="form-control m-b-5" name="adressLocation" formControlName="adressLocation"
+                        required />
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Datos de Empresa</legend>
+            <div class="row">
+                <div class="col-md-3">
+                    <label class="col-form-label">Empresa Principal</label>
+                    <select class="form-control" name="empresaPrincipalId" formControlName="empresaPrincipalId" required
+                        [attr.disabled]="controlCurrentPrincDisabled ? '' : null" (change)="cargarSedes()">
+
+                        <option *ngFor="let org of empresasprincipales" [value]="org.id">
+                            {{ org.nombreAbrev }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="col-form-label">Sede</label>
+                    <select class="form-control selectpicker" name="sedeId" formControlName="sedeId" required
+                        [attr.disabled]="controlCurrentSedeDisabled ? '' : null" (change)="verSede()">
+                        <option *ngFor="let sede of sedes" [value]="sede.SedeId">{{sede.Sede}}</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="col-form-label">Tipo de Empresa</label>
+                    <select class="form-control" name="tipoEmpresaCovidId" formControlName="tipoEmpresaCovidId" required
+                        [attr.disabled]="controlCurrentEmpreDisabled ? '' : null" id="sele" #t
+                        (change)="setearFamiliar(t.value)">
+                        <option *ngFor="let employe of employeTypes" [value]="employe.value">
+                            {{ employe.viewValue }}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="col-form-label">Empresa Empleadora</label>
+                    <mat-form-field class="example-full-width">
+                        <input type="text" placeholder="buscar empleadora" aria-label="Number" matInput
+                            [formControl]="myControlFilter" [matAutocomplete]="auto"
+                            [attr.disabled]="controlCurrentEmpleadoraDisabled ? true : null">
+                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option"
+                                (onSelectionChange)="getPostEmpleadora($event.source.value)">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </mat-form-field>
+
+                    <input type="text" class="form-control m-b-5" name="empresaEmpleadora"
+                        formControlName="empresaEmpleadora" readonly required
+                        [disabled]="controlCurrentEmpleadoraDisabled" />
+
+                    <button mat-button class="btn btn-yellow btn-sm m-l-5 m-b-3" aria-label="empresaEmpleadora"
+                        (click)="AddEmpresaEmpleadora()" [disabled]="controlCurrentEmpleadoraDisabled">Crear
+                        Nueva Empresa
+                        Empleadora</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <ng-container footer>
+        <button mat-button class="btn btn-white btn-sm" [routerLink]="pathBack" aria-label="Delete" matTooltip="Delete">
+            CANCELAR
+        </button>
+
+        <button mat-button class="btn btn-primary btn-sm m-l-5" (click)="registerService(scheduleWorkerForm)"
+            [disabled]="scheduleWorkerForm.invalid" aria-label="SAVE">
+            GRABAR
+        </button>
+    </ng-container>
+    <p>FORMULARIO: {{ scheduleWorkerForm.status }}</p>
+</panel>

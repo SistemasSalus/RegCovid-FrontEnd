@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col-sm-12">
+        <!-- <panel variants="default"> -->
+        <ng-container header>
+            <h4 class="panel-title">FILTROS</h4>
+        </ng-container>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="col-form-label">FECHA INICIO</label>
+                <input type="date" class="form-control m-b-5" [(ngModel)]="filterFechaInicio"
+                    value="filterFechaInicio" />
+            </div>
+            <div class="col-md-4">
+                <label class="col-form-label">FECHA FIN</label>
+                <input type="date" class="form-control m-b-5" [(ngModel)]="filterFechaFin" />
+            </div>
+            <div class="col-md-4">
+                <label class="col-form-label">NOMBRES / DOCUMENTO</label>
+                <input type="text" class="form-control m-b-5" [(ngModel)]="nameOrDocument" />
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="col-form-label" style="visibility: hidden">.</label>
+                <div class="col">
+                    <button type="button" (click)="filter()" class="btn btn-primary width-100">
+                        BUSCAR
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- </panel> -->
+    </div>
+</div>
+<!-- <panel panel-scheduled-list title="LISTA DE SERVICIOS" noButton="true"> -->
+<mat-form-field>
+    <mat-label>Filtro</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ejemplo: Luis Sanchez" #input />
+</mat-form-field>
+<mat-table *ngIf="!loading" #table [dataSource]="dataSource">
+    <ng-container matColumnDef="index">
+        <mat-header-cell *matHeaderCellDef> Nro. </mat-header-cell>
+        <mat-cell *matCellDef="let service; let i = index">
+            <span class="mobile-label">Nro.</span>
+            <span class="mobil-text">{{ i + 1 }}</span>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="TypeExam">
+        <mat-header-cell *matHeaderCellDef>Tipo de Prueba</mat-header-cell>
+        <mat-cell *matCellDef="let service">
+            <span class="mobile-label">T. Prueba:</span>
+            <span class="mobil-text">{{ service.TypeExam | uppercase }}</span>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="MedicalCenter">
+        <mat-header-cell *matHeaderCellDef>Centro Médico</mat-header-cell>
+        <mat-cell *matCellDef="let service">
+            <span class="mobile-label">C. Médico:</span>
+            <span class="mobil-text">{{ service.MedicalCenter | uppercase }}</span>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="WorkerName">
+        <mat-header-cell *matHeaderCellDef>Trabajador</mat-header-cell>
+        <mat-cell *matCellDef="let service">
+            <span class="mobile-label">Trabajador:</span>
+            <span class="mobil-text">{{ service.WorkerName | uppercase }}</span>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="CurrentOccupation">
+        <mat-header-cell *matHeaderCellDef>Puesto</mat-header-cell>
+        <mat-cell *matCellDef="let service">
+            <span class="mobile-label">Puesto:</span>
+            <span class="mobil-text">{{ service.CurrentOccupation | uppercase }}</span>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="FechaServicio">
+        <mat-header-cell *matHeaderCellDef>FechaServicio</mat-header-cell>
+        <mat-cell *matCellDef="let service">
+            <span class="mobile-label">FechaServicio:</span>
+            <span class="mobil-text">{{ service.d_ServiceDate | uppercase }}</span>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="TelephoneNumber">
+        <mat-header-cell *matHeaderCellDef>Teléfono</mat-header-cell>
+        <mat-cell *matCellDef="let service">
+            <span class="mobile-label">Teléfono:</span>
+            <span class="mobil-text">{{ service.TelephoneNumber | uppercase }}</span>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="buttons">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let service">
+            <div fxFlex="row" fxLayoutAlign="end center">
+                <button type="button" class="btn btn-primary width-60 m-r-4" (click)="downloadFile(service.ServiceId)">
+                    <mat-icon matTooltip="Descargar PDF">cloud_download</mat-icon>
+                </button>
+            </div>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let service; columns: displayedColumns" class="service"> </mat-row>
+</mat-table>
+<div *ngIf="loading" class="fa-3x loading">
+    <i class="fas fa-spinner fa-spin"></i>
+</div>
+<!-- </panel> -->

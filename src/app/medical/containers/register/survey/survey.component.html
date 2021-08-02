@@ -1,0 +1,453 @@
+<form [formGroup]="surveyForm">
+  <fieldset>
+    <legend>Datos Generales</legend>
+    <div class="bloque">
+      <div class="row">
+        <div class="col-md-4">
+          <label class="col-form-label">DOMICILIO O RESIDENCIA</label>
+          <div>
+            <select
+              class="form-control"
+              name="tipoDomicilio"
+              formControlName="tipoDomicilio"
+              required
+            >
+              <option *ngFor="let type of typeHome" [value]="type.value">
+                {{ type.viewValue }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Datos Específicos</legend>
+    <div class="bloque">
+      <div class="row">
+        <div class="col-md-3">
+          <label class="col-form-label">¿ES PERSONAL DE SALUD?</label>
+          <div>
+            <select
+              class="form-control"
+              name="esPersonalSaludCbo"
+              formControlName="esPersonalSaludCbo"
+              required
+            >
+              <option *ngFor="let item of yesNo" [value]="item.value">
+                {{ item.viewValue }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label class="col-form-label">¿CUÁL ES SU PROFESIÓN?</label>
+          <div>
+            <select class="form-control" name="profesion" formControlName="profesion" required>
+              <option value="-1"></option>
+              <option *ngFor="let item of profession" [value]="item.value">
+                {{ item.viewValue }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label class="col-form-label">¿TIENE SÍNTOMAS?</label>
+          <div>
+            <select
+              class="form-control"
+              name="tieneSintomas"
+              formControlName="tieneSintomas"
+              required
+            >
+              <option *ngFor="let item of yesNo" [value]="item.value">
+                {{ item.viewValue }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <fieldset>
+            <legend class="fechasintomas">INICIO DE SÍNTOMAS</legend>
+            <div class="row">
+              <div class="col-4">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    class="form-control m-b-5"
+                    placeholder="día"
+                    name="day"
+                    formControlName="day"
+                  />
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    class="form-control m-b-5"
+                    placeholder="mes"
+                    name="month"
+                    formControlName="month"
+                  />
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="form-group">
+                  <input
+                    type="number"
+                    class="form-control m-b-5"
+                    placeholder="año"
+                    name="year"
+                    formControlName="year"
+                  />
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Síntomas</legend>
+    <div class="bloque">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input type="checkbox" id="tos" name="tos" formControlName="tos" value="" />
+            <label for="tos">Tos</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="dolorGarganta"
+              name="dolorGarganta"
+              formControlName="dolorGarganta"
+              value=""
+            />
+            <label for="dolorGarganta">Dolor de Garganta</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="congestionNasal"
+              name="congestionNasal"
+              formControlName="congestionNasal"
+              value=""
+            />
+            <label for="congestionNasal">Congestión Nasal</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="dificultadRespiratoria"
+              name="dificultadRespiratoria"
+              formControlName="dificultadRespiratoria"
+              value=""
+            />
+            <label for="dificultadRespiratoria">Dificultad Respiratoria</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="fiebreEscalofrio"
+              name="fiebreEscalofrio"
+              formControlName="fiebreEscalofrio"
+              value=""
+            />
+            <label for="fiebreEscalofrio">Fiebre-Escalofrío</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="malestarGeneral"
+              name="malestarGeneral"
+              formControlName="malestarGeneral"
+              value=""
+            />
+            <label for="malestarGeneral">Malestar General</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input type="checkbox" id="diarrea" name="diarrea" formControlName="diarrea" value="" />
+            <label for="diarrea">Diarrea</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="nauseasVomitos"
+              name="nauseasVomitos"
+              formControlName="nauseasVomitos"
+              value=""
+            />
+            <label for="nauseasVomitos">Nauseas-Vómitos</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input type="checkbox" id="cefalea" name="cefalea" formControlName="cefalea" value="" />
+            <label for="cefalea">Cefaléa</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="irritabilidadConfusion"
+              name="irritabilidadConfusion"
+              formControlName="irritabilidadConfusion"
+              value=""
+            />
+            <label for="irritabilidadConfusion">Irritabilidad-Confusión</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input type="checkbox" id="dolor" name="dolor" formControlName="dolor" value="" />
+            <label for="dolor">Dolor</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="expectoracion"
+              name="expectoracion"
+              formControlName="expectoracion"
+              value=""
+            />
+            <label for="expectoracion">Expectoración</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Tipo de Dolor que Presenta</legend>
+    <div class="bloque">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="dolorMuscular"
+              name="dolorMuscular"
+              formControlName="dolorMuscular"
+              value=""
+            />
+            <label for="dolorMuscular">Muscular</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="dolorAbdominal"
+              name="dolorAbdominal"
+              formControlName="dolorAbdominal"
+              value=""
+            />
+            <label for="dolorAbdominal">Abdominal</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="dolorPecho"
+              name="dolorPecho"
+              formControlName="dolorPecho"
+              value=""
+            />
+            <label for="dolorPecho">Pecho</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="dolorArticulaciones"
+              name="dolorArticulaciones"
+              formControlName="dolorArticulaciones"
+              value=""
+            />
+            <label for="dolorArticulaciones">Articulaciones</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Otros síntomas</legend>
+    <div class="bloque">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="checkbox checkbox-css">
+            <textarea rows="5" cols="50" name="otrosSintomas" formControlName="otrosSintomas">
+            </textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Condición de Riesgo</legend>
+    <div class="bloque">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="diabetes"
+              name="diabetes"
+              formControlName="diabetes"
+              value=""
+            />
+            <label for="diabetes">Diabetes</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="enfPulmonarCronica"
+              name="enfPulmonarCronica"
+              formControlName="enfPulmonarCronica"
+              value=""
+            />
+            <label for="enfPulmonarCronica">Enf. Pulmonar Crónica</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input type="checkbox" id="cancer" name="cancer" formControlName="cancer" value="" />
+            <label for="cancer">Cáncer</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="hipertensionArterial"
+              name="hipertensionArterial"
+              formControlName="hipertensionArterial"
+              value=""
+            />
+            <label for="hipertensionArterial">Hipertensión Arterial</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="obesidad"
+              name="obesidad"
+              formControlName="obesidad"
+              value=""
+            />
+            <label for="obesidad">Obesidad</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input type="checkbox" id="mayor65" name="mayor65" formControlName="mayor65" value="" />
+            <label for="mayor65">Mayor 65 años</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="insuficienciaCronica"
+              name="insuficienciaCronica"
+              formControlName="insuficienciaCronica"
+              value=""
+            />
+            <label for="insuficienciaCronica">Insuficiencia Crónica Renal</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="embarazo"
+              name="embarazo"
+              formControlName="embarazo"
+              value=""
+            />
+            <label for="embarazo">Embarazo-Puerperio</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="enfCardiovascular"
+              name="enfCardiovascular"
+              formControlName="enfCardiovascular"
+              value=""
+            />
+            <label for="enfCardiovascular">Enfermedad Cardiovascular</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input type="checkbox" id="asma" name="asma" formControlName="asma" value="" />
+            <label for="asma">Asma</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="enfInmunosupresor"
+              name="enfInmunosupresor"
+              formControlName="enfInmunosupresor"
+              value=""
+            />
+            <label for="enfInmunosupresor">Enf. o tratamiento inmunosupresor</label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="checkbox checkbox-css">
+            <input
+              type="checkbox"
+              id="personalSalud"
+              name="personalSalud"
+              formControlName="personalSalud"
+              value=""
+            />
+            <label for="personalSalud">Personal de Salud</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</form>
