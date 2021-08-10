@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment.prod';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, mapTo, catchError, tap } from 'rxjs/operators';
 import { Precio } from '../models/precio.model';
+import { LoadDataTables } from '../models/loaddatatables.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +13,11 @@ export class PrecioService {
 
   constructor(private http: HttpClient) { }
 
-  getServicesForAdmin(
-    fechaInicioServicio: string,
-    fechaFinServicio: string,
-    nameOrDocument: string,
-  ): Observable<Precio[]> {
+  getPrecios(): Observable<LoadDataTables> {
 
-    const url = `${environment.ENDPOINTS.API_URL}/service/servicesForAdmin?fechaInicioServicio=${fechaInicioServicio}&fechaFinServicio=${fechaFinServicio}&nameOrDocument=${nameOrDocument}`;
-
+    const url = `${environment.ENDPOINTS.API_URL}/precio/precios`;
     return this.http
       .get<any>(url)
-      .pipe(map((precios: any[]) => precios.map((precio) => Precio.buildFromJson(precio))));
+      .pipe(map((loaddatatables: any) => LoadDataTables.buildFromJson(loaddatatables)));
   }
 }

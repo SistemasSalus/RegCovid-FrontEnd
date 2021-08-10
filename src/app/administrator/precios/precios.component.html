@@ -1,16 +1,24 @@
-<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>First name</th>
-            <th>Last name</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let person of persons">
-            <td>{{ person.id }}</td>
-            <td>{{ person.firstName }}</td>
-            <td>{{ person.lastName }}</td>
-        </tr>
-    </tbody>
+
+<table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered dt-responsive nowrap">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Empresa</th>
+      <th>Sede</th>
+      <th>Precio</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="precios?.length != 0">
+    <tr *ngFor="let precio of precios">
+      <td>{{ precio.id }}</td>
+      <td>{{ precio.Empresa }}</td>
+      <td>{{ precio.sede }}</td>
+      <td>{{ precio.precio }}</td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="precios?.length == 0">
+    <tr>
+      <td colspan="3" class="no-data-available">No data!</td>
+    </tr>
+  </tbody>
 </table>

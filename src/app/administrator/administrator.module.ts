@@ -39,7 +39,7 @@ const routes: Routes = [
     component: ServiceAdminComponent,
   },
   {
-    path: 'precios',
+    path: 'app-precios',
     component: PreciosComponent,
   },
 ];

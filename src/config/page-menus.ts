@@ -8,6 +8,10 @@ var pageMenus = [
       {
         url: 'administrator/services-admin',
         title: 'Consulta Servicios',
+      },
+      {
+        url: 'administrator/app-precios',
+        title: 'Consulta Precios',
       }
     ],
   },
