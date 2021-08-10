@@ -63,7 +63,7 @@ export class PreciosComponent implements OnInit {
             });
           })
       },
-      columns: [{ data: 'id' }, { data: 'Empresa' }, { data: 'sede' }, { data: 'precio' }]
+      columns: [{ data: 'Empresa' }, { data: 'sede' }, { data: 'Prueba' },  { data: 'lugarToma' }, { data: 'precio' }]
     };
 
   }
