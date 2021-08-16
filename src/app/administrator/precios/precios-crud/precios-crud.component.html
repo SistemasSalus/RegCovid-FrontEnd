@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Hi CRUD</h1>
+<h1 mat-dialog-title>Registro</h1>
 <div mat-dialog-content>
   <div class="row">
       <mat-form-field>
@@ -51,5 +51,5 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCerrar()">Salir</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Grabar</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data" >Grabar</button>
 </div>

@@ -52,7 +52,7 @@ export class PreciosComponent implements AfterViewInit  {
 
   newRegister(): void {
     // this.router.navigate(['administrator/app-precios/appinsert']);
-    const dialogRef = this.dialog.open(PreciosCrudComponent,{width:'400px',data: DATA_DEFAULT});
+    const dialogRef = this.dialog.open(PreciosCrudComponent,{width:'220px',data: DATA_DEFAULT});
     dialogRef.afterClosed()
       .subscribe(result=> {
         if (result) {
@@ -67,7 +67,7 @@ export class PreciosComponent implements AfterViewInit  {
   }
 
   editRegister(item:any){
-    const dialogRef = this.dialog.open(PreciosCrudComponent,{width:'600px',data:item});
+    const dialogRef = this.dialog.open(PreciosCrudComponent,{width:'220px',data:item});
     dialogRef.afterClosed()
       .subscribe(result=> {
         if (result) {
