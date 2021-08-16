@@ -116,6 +116,14 @@ export class MedicalService {
       .pipe(map((headCount: any[]) => headCount.map((row) => EmpresaPrincipal.buildFromJson(row))));
   }
 
+  getEmpresas(): Observable<EmpresaPrincipal[]> {
+    const url = `${environment.ENDPOINTS.API_URL}/Empresas`;
+    console.log(url);
+    return this.http
+      .get<any>(url)
+      .pipe(map((headCount: any[]) => headCount.map((row) => EmpresaPrincipal.buildFromJson(row))));
+  }
+
   getEmpleadoras(filtroNombre: string): Observable<Empleadora[]> {
     const url = `${environment.ENDPOINTS.API_URL}/EmpresaEmpleadora/${filtroNombre}`;
     return this.http

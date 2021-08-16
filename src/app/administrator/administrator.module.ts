@@ -10,6 +10,10 @@ import { PreciosComponent } from './precios/precios.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -19,11 +23,13 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatButtonModule} from '@angular/material/button';
 import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from '../auth/token.interceptor';
-import { DataTablesModule } from 'angular-datatables';
+import { RegisterInsertComponent } from './precios/register/register-insert/register-insert.component';
+import { PreciosCrudComponent } from './precios/precios-crud/precios-crud.component';
 
 const routes: Routes = [
   {
@@ -42,10 +48,14 @@ const routes: Routes = [
     path: 'app-precios',
     component: PreciosComponent,
   },
+  {
+    path: 'app-precios/appinsert',
+    component: RegisterInsertComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [IndicatorsComponent, UsersComponent, ServiceAdminComponent, PreciosComponent],
+  declarations: [IndicatorsComponent, UsersComponent, ServiceAdminComponent, PreciosComponent, RegisterInsertComponent, PreciosCrudComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
@@ -71,7 +81,11 @@ const routes: Routes = [
     MatTooltipModule,
     NgbModule,
     PerfectScrollbarModule,
-    DataTablesModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatCardModule,
+    MatDividerModule,
+    MatButtonModule,
   ],
 })
 export class AdministratorModule { }

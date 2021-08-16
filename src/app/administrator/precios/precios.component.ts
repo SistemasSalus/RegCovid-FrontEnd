@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, Inject } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort} from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 import { Precio } from '../models/precio.model';
 import { PrecioService } from '../services/precio.service';
+import { PreciosCrudComponent } from './precios-crud/precios-crud.component';
+import Swal from 'sweetalert2';
 
-class DataTablesResponse {
-  data: any[];
-  draw: number;
-  recordsFiltered: number;
-  recordsTotal: number;
-}
+const DATA_DEFAULT = {
+  organizationId: "",
+  locationId: "",
+  lugarTomaID:"",
+  tipoPrueba: "",
+  precio:0,
+ }
 
 @Component({
   selector: 'app-precios',
@@ -17,54 +25,95 @@ class DataTablesResponse {
   styleUrls: ['./precios.component.scss']
 })
 
-export class PreciosComponent implements OnInit {
-  dtOptions: DataTables.Settings = {};
-  precios: Precio[] = [];
+export class PreciosComponent implements AfterViewInit  {
+  // precios: Precio[] = [];
+  displayedColumns: string[] = ['Empresa', 'sede', 'Prueba', 'lugarToma','precio','acciones'];
+  dataSource: MatTableDataSource<Precio> = new MatTableDataSource([]);
 
-  constructor(private http: HttpClient,private precioService: PrecioService) { }
+  constructor(private precioService: PrecioService, private router: Router, public dialog: MatDialog) { }
+
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
 
   ngOnInit(): void {
+    this.filter();
+  }
 
-    const that = this;
+  filter() {
+    this.precioService
+      .getPrecios()
+      .subscribe((res) => this.dataSource.data = res);
+  }
 
-    var a = this.precioService.getPrecios();
+  newRegister(): void {
+    // this.router.navigate(['administrator/app-precios/appinsert']);
+    const dialogRef = this.dialog.open(PreciosCrudComponent,{width:'400px',data: DATA_DEFAULT});
+    dialogRef.afterClosed()
+      .subscribe(result=> {
+        if (result) {
+          console.log("Nuevo Registro:",result)
+          this.precioService
+            .createPrecios(result)
+            .subscribe(
+              () => {window.location.href = "/administrator/app-precios"}
+            );
+        }
+    });
+  }
 
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 2,
-      serverSide: true,
-      processing: true,
-      ajax: (dataTablesParameters: any, callback) => {
-        // that.http
-        //   .get<DataTablesResponse>(
-        //     url,
-        //     {}
-        //   ).subscribe(resp => {
-        //     console.log(resp.recordsFiltered);
+  editRegister(item:any){
+    const dialogRef = this.dialog.open(PreciosCrudComponent,{width:'600px',data:item});
+    dialogRef.afterClosed()
+      .subscribe(result=> {
+        if (result) {
+          console.log("Editar Registro:",result)
+          this.precioService
+            .updatePrecios(result)
+            .subscribe(
+              () => {window.location.href = "/administrator/app-precios"}
+            );
+        }
+      });
+  }
 
-        //     that.precios = resp.data;
+  deleteRegister(item:any){
+    // const dialogRef = this.dialog.open(PreciosCrudComponent,{width:'600px',data:item});
+    // dialogRef.afterClosed()
+    //   .subscribe(result=> {
+    //     if (result) {
+    //       console.log("Editar Registro:",result)
+    //       this.precioService
+    //         .updatePrecios(result)
+    //         .subscribe(
+    //           () => {window.location.href = "/administrator/app-precios"}
+    //         );
+    //     }
+    //   });
 
-        //     callback({
-        //       recordsTotal: resp.recordsTotal,
-        //       recordsFiltered: resp.recordsFiltered,
-        //       data: []
-        //     });
-        //   });
+      Swal.fire({
+        title: 'Eliminar Parametro',
+        inputAttributes: {
+          autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Aceptar',
+        showLoaderOnConfirm: true,
+        preConfirm: () => {
+          this.precioService.deletePrecios(item).subscribe(
+            () => {window.location.href = "/administrator/app-precios"}
+          );
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire("Parametro Borrado");
 
-        that.precioService
-          .getPrecios()
-          .subscribe(resp => {
-            that.precios = resp.data;
-
-            callback({
-              recordsTotal: resp.recordsTotal,
-              recordsFiltered: resp.recordsFiltered,
-              data: []
-            });
-          })
-      },
-      columns: [{ data: 'Empresa' }, { data: 'sede' }, { data: 'Prueba' },  { data: 'lugarToma' }, { data: 'precio' }]
-    };
-
+        }
+      })
   }
 }

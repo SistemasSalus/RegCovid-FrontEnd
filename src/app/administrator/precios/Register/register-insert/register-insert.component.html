@@ -1,0 +1,39 @@
+<div class="mat-elevation-z8">
+  <form >
+    <div class="row">
+        <div class="col-md-12">
+          <div class="col-md-4">
+            <label class="col-form-label">TIPO PRUEBA</label>
+            <div>
+              <select class="form-control" name="componentId" formControlName="componentId" required>
+                <option *ngFor="let component of components" [value]="component.value">
+                  {{ component.viewValue }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label class="col-form-label">MOTIVO DE PRUEBA</label>
+            <div>
+              <select class="form-control" name="reasonExamId" formControlName="reasonExamId" required>
+                <option *ngFor="let reason of reasonExam" [value]="reason.value">
+                  {{ reason.viewValue }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label class="col-form-label">LUGAR DE TOMA</label>
+            <div>
+              <select class="form-control" name="placeExamId" formControlName="placeExamId" required>
+                <option *ngFor="let place of placeExam" [value]="place.value">
+                  {{ place.viewValue }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+    </div>
+  </form>
+</div>
+<br>
