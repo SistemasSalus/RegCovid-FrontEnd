@@ -31,6 +31,13 @@ export class LaboratoryComponent implements OnInit, OnChanges {
   ANTIGENO_RES_2_PRUEBA_ID = 'N006-MF000000252';
   ANTIGENO_CLASIFICACION_CLINICA_ID = 'N006-MF000000248';
 
+  MOLECULAR_ID = 'N003-ME000000068';
+  MOLECULAR_FECHA_EJECUCION_ID = 'N003-MF000000294';
+  MOLECULAR_PROCEDENCIA_SOLICITUD_ID = 'N003-MF000000295';
+  MOLECULAR_RES_1_PRUEBA_ID = 'N003-MF000000296';
+  MOLECULAR_RES_2_PRUEBA_ID = 'N003-MF000000297';
+  MOLECULAR_CLASIFICACION_CLINICA_ID = 'N003-MF000000293';
+
   listaProcedenciaSolicitud: DropdowList[] = [
     { value: 0, viewValue: 'LLAMADA AL 113' },
     { value: 1, viewValue: 'PERSONAL DE SALUD' },
@@ -56,6 +63,7 @@ export class LaboratoryComponent implements OnInit, OnChanges {
     { value: 1, viewValue: 'LEVE' },
     { value: 2, viewValue: 'MODERADO' },
     { value: 3, viewValue: 'SEVERO' },
+    { value: 4, viewValue: 'ASINTOMATICO' },
   ];
 
   constructor(private _formBuilder: FormBuilder, private medicalService: MedicalService) {
@@ -154,6 +162,39 @@ export class LaboratoryComponent implements OnInit, OnChanges {
               res.find((p) => p.ComponentFieldId === this.PR_CLASIFICACION_CLINICA_ID) == null
                 ? null
                 : res.find((p) => p.ComponentFieldId === this.PR_CLASIFICACION_CLINICA_ID).Value1,
+          });
+        });
+    } else if (this.componentId === this.MOLECULAR_ID) {
+      this.medicalService
+        .getValoresComponente(this.serviceId, this.componentId)
+        .subscribe((res) => {
+          this.laboratoryForm.patchValue({
+            fechaEjecucion:
+              res.find((p) => p.ComponentFieldId === this.MOLECULAR_FECHA_EJECUCION_ID) == null
+                ? null
+                : res.find((p) => p.ComponentFieldId === this.MOLECULAR_FECHA_EJECUCION_ID).Value1,
+
+            procedenciaSolicitud:
+              res.find((p) => p.ComponentFieldId === this.MOLECULAR_PROCEDENCIA_SOLICITUD_ID) == null
+                ? null
+                : res.find((p) => p.ComponentFieldId === this.MOLECULAR_PROCEDENCIA_SOLICITUD_ID)
+                    .Value1,
+
+            resultadoPrimeraPrueba:
+              res.find((p) => p.ComponentFieldId === this.MOLECULAR_RES_1_PRUEBA_ID) == null
+                ? null
+                : res.find((p) => p.ComponentFieldId === this.MOLECULAR_RES_1_PRUEBA_ID).Value1,
+
+            resultadoSegundaPrueba:
+              res.find((p) => p.ComponentFieldId === this.MOLECULAR_RES_2_PRUEBA_ID) == null
+                ? null
+                : res.find((p) => p.ComponentFieldId === this.MOLECULAR_RES_2_PRUEBA_ID).Value1,
+
+            clasificacionClinica:
+              res.find((p) => p.ComponentFieldId === this.MOLECULAR_CLASIFICACION_CLINICA_ID) == null
+                ? null
+                : res.find((p) => p.ComponentFieldId === this.MOLECULAR_CLASIFICACION_CLINICA_ID)
+                    .Value1,
           });
         });
     }

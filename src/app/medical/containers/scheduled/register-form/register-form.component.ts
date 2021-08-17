@@ -54,7 +54,7 @@ export class RegisterFormComponent implements OnInit {
   components: DropdowListString[] = [
     { value: 'N003-ME000000060', viewValue: 'PRUEBA RÁPIDA' },
     { value: 'N003-ME000000067', viewValue: 'ANTÍGENOS' },
-    { value: 'N003-ME000000000', viewValue: 'MOLECULAR' },
+    { value: 'N003-ME000000068', viewValue: 'MOLECULAR' },
   ];
 
   documentTypes: DropdowList[] = [
@@ -90,7 +90,9 @@ export class RegisterFormComponent implements OnInit {
   placeExam: DropdowList[] = [
     { value: 1, viewValue: 'SEDE' },
     { value: 2, viewValue: 'CLÍNICA' },
-    { value: 3, viewValue: 'DOMICILIO' },
+    { value: 3, viewValue: 'DOMICILIO - ANILLO 1' },
+    { value: 4, viewValue: 'DOMICILIO - ANILLO 2' },
+    { value: 5, viewValue: 'DOMICILIO - ANILLO 3' },
   ];
 
   sedes: Sede[];
