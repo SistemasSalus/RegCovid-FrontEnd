@@ -33,7 +33,9 @@ export class PreciosCrudComponent implements OnInit{
   placeExam: DropdowList[] = [
     { value: 1, viewValue: 'SEDE' },
     { value: 2, viewValue: 'CLÍNICA' },
-    { value: 3, viewValue: 'DOMICILIO' },
+    { value: 3, viewValue: 'DOMICILIO - ANILLO 1' },
+    { value: 4, viewValue: 'DOMICILIO - ANILLO 2' },
+    { value: 5, viewValue: 'DOMICILIO - ANILLO 3' },
   ];
 
   organizations: EmpresaPrincipal[];
